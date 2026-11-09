@@ -20,6 +20,9 @@
 ```
 portfolio-site/
 ├── index.html      ← 整个网站（文字、样式、脚本都在这个文件里）
+├── 404.html        ← 找不到页面时显示的页面
+├── sitemap.xml     ← 给搜索引擎的页面清单
+├── robots.txt      ← 告诉搜索引擎可以抓取什么
 ├── images/         ← 放项目封面图（现在可以先不管）
 ├── README.md       ← 你正在看的说明
 └── preview-*.png   ← 预览截图，可以删
@@ -54,7 +57,7 @@ portfolio-site/
 
 ### 3. 换邮箱
 
-搜索 `hello@yourname.com`，换成你的邮箱（两处：按钮链接和显示文字）。
+搜索 `3303295930@qq.com`，换成你的邮箱（两处：按钮链接和显示文字）。
 
 ### 4. 换作品（4 个项目）
 
@@ -83,7 +86,7 @@ portfolio-site/
 | 年份 | `<span class="work-year">` 里的文字 |
 | 点击去哪 | 把 `href="#"` 换成真实网址，例如 `href="https://example.com"` |
 
-> **小提示**：链接还是 `#` 时，点击会弹出「示例项目」的提示，这是故意的。
+> **小提示**：链接还是 `#` 时，点击会弹出「概念项目」的提示，这是故意的。
 > 换成真实网址后提示会自动消失，不用改别的。
 
 #### 想换封面图？
@@ -101,7 +104,7 @@ portfolio-site/
 ### 5. 换「关于我」
 
 搜索 `你好，我是 John`，改下面三段文字和技能标签。
-右侧的 `profile.json` 也是示例，把里面的名字、城市、工具改成你的。
+右侧的 `profile.json` 也同步成了 AI 新人的信息，把里面的名字、城市、工具改成你的。
 
 ### 6. 换社交链接
 
@@ -110,12 +113,10 @@ GitHub 和 Bilibili 已经换成你的主页，点击会在新窗口打开：
 - GitHub：`https://github.com/zpy03zpy`
 - Bilibili：`https://space.bilibili.com/3690987675191907`
 
-要改的话搜索对应地址，换成新的即可。
-
-即刻、小红书、微博还是占位链接。搜索对应的名字，把 `href="#"` 换成你的主页地址：
+要改的话搜索对应地址，换成新的即可。想加别的平台，按同样的格式加一行：
 
 ```html
-<a href="https://你的主页地址" target="_blank" rel="noopener noreferrer">即刻</a>
+<a href="https://你的主页地址" target="_blank" rel="noopener noreferrer">平台名</a>
 ```
 
 `target="_blank"` 表示新窗口打开，`rel="noopener noreferrer"` 是安全写法，建议保留。
@@ -142,7 +143,7 @@ GitHub 和 Bilibili 已经换成你的主页，点击会在新窗口打开：
 
 | 想改什么 | 找哪里 | 说明 |
 | --- | --- | --- |
-| 环的数量 | `var count = mobile ? 22 : 30` | 数字越大越密，低端设备可以改成 18 / 24 |
+| 环的数量 | `var count = mobile ? 18 : 28` | 数字越大越密，低端设备可以再降到 14 / 20 |
 | 尘埃数量 | `var n = Math.round(...)` | 每环的粒子数，太大可能卡 |
 | 波纹幅度 | `var amp1` / `var amp2` | 数字越大，环越“波浪” |
 | 漂移速度 | `t * 0.011` | 改大一点转得快 |
@@ -152,7 +153,16 @@ GitHub 和 Bilibili 已经换成你的主页，点击会在新窗口打开：
 不想要这个动效：删掉 `<canvas class="ring-field" …>` 这一行即可，
 背景的网格、光晕和噪点还会保留。系统开启「减少动态效果」时，它只画一帧静态图，不会动。
 
-### 9. 删掉不想要的板块
+### 9. 404、sitemap 和 robots
+
+- `404.html`：访问不存在的地址时显示。它有一个「回到首页」按钮，链接写死了线上地址；换域名时记得改。
+- `sitemap.xml`：给搜索引擎的页面清单。换域名时把 `<loc>` 改掉。
+- `robots.txt`：允许搜索引擎抓取，并指向 sitemap。
+- 发布时这三个文件要和 `index.html` 一起上传，否则线上不会生效。
+
+按 `Tab` 键时，页面左上角会出现「跳到主要内容」，这是给键盘用户的快捷入口，不用时可以不管。
+
+### 10. 删掉不想要的板块
 
 比如不想要「关于我」：
 
@@ -176,12 +186,15 @@ GitHub 和 Bilibili 已经换成你的主页，点击会在新窗口打开：
 
 ### 方案 B：GitHub Pages（免费、稳定、适合长期）
 
+> 本站已经发布在 `zpy03zpy/portfolio-site`，网址是 <https://zpy03zpy.github.io/portfolio-site/>。
+> 以后更新只需替换仓库里的 `index.html`（以及 `404.html` 等文件），Pages 会自动重建；下面是从零搭建的通用步骤。
+
 1. 注册 <https://github.com>。
 2. 右上角 **+ → New repository**：
    - 仓库名填 `你的用户名.github.io`（例如 `xiaolin.github.io`）
    - 选 **Public**
    - 点 **Create repository**
-3. 点 **Add file → Upload files**，把 `index.html` 和 `images` 文件夹拖进去，点 **Commit changes**。
+3. 点 **Add file → Upload files**，把 `index.html`、`404.html`、`sitemap.xml`、`robots.txt` 和 `images` 文件夹拖进去，点 **Commit changes**。
 4. 进入仓库 **Settings → Pages**：
    - Source 选 **Deploy from a branch**
    - Branch 选 **main**，目录选 **/ (root)**，点 **Save**
@@ -207,7 +220,7 @@ GitHub 和 Bilibili 已经换成你的主页，点击会在新窗口打开：
 先确认 `<meta name="viewport" …>` 那行没删。然后用浏览器开发者工具（F12）切到手机尺寸检查。
 
 **Q：点击「查看项目」没反应？**
-因为 `href` 还是 `#`，这是示例状态。换成真实网址就好。
+因为 `href` 还是 `#`，这是概念项目的状态。换成真实网址就好。
 
 **Q：想加「下载简历」？**
 把 PDF 放进文件夹，然后在按钮位置加：
@@ -223,7 +236,7 @@ GitHub 和 Bilibili 已经换成你的主页，点击会在新窗口打开：
 
 ## 六、接下来可以做的
 
-- 把 4 个示例项目换成你**真正做过的东西**，每个写清「问题 → 我的做法 → 结果」。
+- 把 4 个概念项目换成你**真正做过的东西**，每个写清「问题 → 我的做法 → 结果」。
 - 给每个项目做单独的详情页（进阶，需要多几个 HTML 文件）。
 - 加一个访问统计（Umami、Google Analytics）。
 - 买一个自己的域名，比如 `yourname.com`。
