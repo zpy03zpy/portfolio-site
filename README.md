@@ -1,7 +1,7 @@
 # John 的作品集网站 · 使用说明
 
-**线上地址：** https://zpy03zpy.github.io/portfolio-site/
-**代码仓库：** https://github.com/zpy03zpy/portfolio-site
+- **线上地址：** <https://zpy03zpy.github.io/portfolio-site/>
+- **代码仓库：** <https://github.com/zpy03zpy/portfolio-site>
 
 一个**深色科技风**的单页作品集：首屏介绍 → 精选作品 → 关于我 → 联系方式。
 背景是一层缓缓旋转的「环形尘埃」，纯 HTML + CSS + JavaScript 绘制，没有框架、没有依赖，**不用安装任何东西**。
