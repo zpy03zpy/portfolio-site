@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>John — 设计与开发作品集</title>
-<meta name="description" content="John 的作品集：品牌视觉、网页体验与数字产品设计。">
+<title>John — AI 新人作品集</title>
+<meta name="description" content="John 的作品集：AI 学习、网页体验与视觉设计。">
 <meta property="og:type" content="website">
-<meta property="og:title" content="John — 设计与开发作品集">
-<meta property="og:description" content="品牌视觉、网页体验与数字产品设计。">
+<meta property="og:title" content="John — AI 新人作品集">
+<meta property="og:description" content="AI 学习、网页体验与视觉设计。">
 <meta name="theme-color" content="#06070a">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306070a'/%3E%3Ctext x='32' y='44' font-family='Arial' font-size='34' font-weight='700' text-anchor='middle' fill='%23a78bfa'%3EJ%3C/text%3E%3C/svg%3E">
 <script>document.documentElement.classList.add('js');</script>
@@ -50,6 +50,17 @@
   a{ color: inherit; }
 
   :focus-visible{ outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 4px; }
+
+  .skip-link{
+    position: fixed; top: 12px; left: 16px; z-index: 200;
+    padding: 11px 18px; border-radius: 999px;
+    background: var(--ink); color: var(--bg);
+    font-size: .85rem; font-weight: 700; text-decoration: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,.5);
+    transform: translateY(-180%);
+    transition: transform .22s var(--ease);
+  }
+  .skip-link:focus{ transform: translateY(0); }
 
   /* ============================================================
      2. 背景：网格 + 光晕 + 噪点
@@ -561,6 +572,8 @@
 </head>
 <body id="top">
 
+<a class="skip-link" href="#main">跳到主要内容</a>
+
 <div class="bg" aria-hidden="true">
   <div class="bg-grid"></div>
   <canvas class="ring-field" id="ring-field" aria-hidden="true"></canvas>
@@ -581,14 +594,15 @@
   </nav>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
   <!-- ==================== 首屏 ==================== -->
   <section class="hero">
     <div class="hero-copy">
       <p class="eyebrow"><span class="status-dot"></span>Portfolio 2026 · 开放合作中</p>
       <h1>把复杂的事，<br>做得简单，<br><span class="grad">也好看。</span></h1>
       <p class="lede">
-        我是 John，一名设计师与前端开发者。专注于品牌视觉、网页体验与数字产品——用克制的设计，解决真实的问题。
+        我是 John，一个正在学习 AI 的新人。<br>
+        喜欢把模型、提示词和网页做成好用的东西。
       </p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#work">查看作品 <span aria-hidden="true">↓</span></a>
@@ -596,7 +610,7 @@
       </div>
       <dl class="hero-meta">
         <div><dt>所在地</dt><dd>中国 · 成都</dd></div>
-        <div><dt>专注</dt><dd>品牌 / 网页 / 产品</dd></div>
+        <div><dt>专注</dt><dd>AI / 网页 / 视觉</dd></div>
         <div><dt>状态</dt><dd>可接新项目</dd></div>
       </dl>
     </div>
@@ -619,12 +633,12 @@
     <div class="section-head reveal">
       <p class="section-label">01 — Selected Work</p>
       <h2>精选作品</h2>
-      <p class="section-sub">下面是四个示例项目，用来展示版式与交互。换成你自己的项目时，改标题、说明和链接即可。</p>
+      <p class="section-sub">下面是四个概念项目，用来展示版式与交互。换成你自己的项目时，改标题、说明和链接即可。</p>
     </div>
 
     <div class="work-grid">
       <!-- 项目 1：改这里的文字和链接 -->
-      <a class="work-card reveal" href="#" data-demo="示例项目：把链接换成你的项目地址，或直接删除 href。" style="--c1:#22d3ee; --c2:#6366f1;">
+      <a class="work-card reveal" href="#" data-demo="概念项目：暂无外部链接；有真实项目后把 href 换成项目地址。" style="--c1:#22d3ee; --c2:#6366f1;">
         <div class="work-art">
           <!-- 有真实项目图时，把下面这行取消注释（图片放进 images 文件夹）：
           <img src="images/project-1.jpg" alt="Aurora 数据看板项目封面"> -->
@@ -640,7 +654,7 @@
       </a>
 
       <!-- 项目 2 -->
-      <a class="work-card reveal" href="#" data-demo="示例项目：把链接换成你的项目地址，或直接删除 href。" style="--c1:#f472b6; --c2:#8b5cf6; --d:.08s;">
+      <a class="work-card reveal" href="#" data-demo="概念项目：暂无外部链接；有真实项目后把 href 换成项目地址。" style="--c1:#f472b6; --c2:#8b5cf6; --d:.08s;">
         <div class="work-art">
           <span class="work-year">2025 · BRANDING</span>
           <span class="work-index">02</span>
@@ -654,7 +668,7 @@
       </a>
 
       <!-- 项目 3 -->
-      <a class="work-card reveal" href="#" data-demo="示例项目：把链接换成你的项目地址，或直接删除 href。" style="--c1:#34d399; --c2:#0ea5e9;">
+      <a class="work-card reveal" href="#" data-demo="概念项目：暂无外部链接；有真实项目后把 href 换成项目地址。" style="--c1:#34d399; --c2:#0ea5e9;">
         <div class="work-art">
           <span class="work-year">2025 · MOBILE</span>
           <span class="work-index">03</span>
@@ -668,7 +682,7 @@
       </a>
 
       <!-- 项目 4 -->
-      <a class="work-card reveal" href="#" data-demo="示例项目：把链接换成你的项目地址，或直接删除 href。" style="--c1:#fbbf24; --c2:#f472b6; --d:.08s;">
+      <a class="work-card reveal" href="#" data-demo="概念项目：暂无外部链接；有真实项目后把 href 换成项目地址。" style="--c1:#fbbf24; --c2:#f472b6; --d:.08s;">
         <div class="work-art">
           <span class="work-year">2024 · WEB</span>
           <span class="work-index">04</span>
@@ -692,16 +706,16 @@
 
     <div class="about-grid">
       <div class="about-text reveal">
-        <p class="about-lead">你好，我是 John。白天做界面，晚上研究排版和动效。</p>
-        <p>过去三年，我参与过从 0 到 1 的产品设计，也帮小团队做过品牌和官网。我相信好的设计不需要喧哗：信息清楚、节奏舒服、细节可靠，就已经赢了大半。</p>
-        <p>目前以自由职业身份工作，欢迎有趣的合作。如果你也在做一件认真的事，我们大概聊得来。</p>
+        <p class="about-lead">你好，我是 John，一个正在蓬勃发展、不断进取的 AI 新人。</p>
+        <p>我对 AI 如何改变创作和工作方式充满好奇，正在学习把模型、提示词和网页体验组合成真正好用的东西。</p>
+        <p>这个网站既是我的作品集，也是我的练习场：把想法做出来，再一点点改好。欢迎交流、合作，或者给我一个值得尝试的题目。</p>
         <ul class="skills" aria-label="技能">
-          <li>品牌视觉</li>
-          <li>UI / UX</li>
+          <li>AI 工具</li>
+          <li>Prompt</li>
           <li>网页设计</li>
           <li>HTML / CSS / JS</li>
-          <li>动效</li>
-          <li>Figma</li>
+          <li>视觉设计</li>
+          <li>持续学习中</li>
         </ul>
       </div>
 
@@ -712,11 +726,11 @@
         </div>
         <pre><code><span class="tp">{</span>
   <span class="tk">"name"</span><span class="tp">:</span> <span class="ts">"John"</span><span class="tp">,</span>
-  <span class="tk">"role"</span><span class="tp">:</span> <span class="tp">[</span><span class="ts">"Designer"</span><span class="tp">,</span> <span class="ts">"Developer"</span><span class="tp">],</span>
+  <span class="tk">"role"</span><span class="tp">:</span> <span class="tp">[</span><span class="ts">"AI Learner"</span><span class="tp">,</span> <span class="ts">"Designer"</span><span class="tp">],</span>
   <span class="tk">"based_in"</span><span class="tp">:</span> <span class="ts">"Chengdu, CN"</span><span class="tp">,</span>
-  <span class="tk">"focus"</span><span class="tp">:</span> <span class="tp">[</span><span class="ts">"Brand"</span><span class="tp">,</span> <span class="ts">"Web"</span><span class="tp">,</span> <span class="ts">"Product"</span><span class="tp">],</span>
-  <span class="tk">"tools"</span><span class="tp">:</span> <span class="tp">[</span><span class="ts">"Figma"</span><span class="tp">,</span> <span class="ts">"VS Code"</span><span class="tp">],</span>
-  <span class="tk">"status"</span><span class="tp">:</span> <span class="ts">"open to freelance"</span>
+  <span class="tk">"focus"</span><span class="tp">:</span> <span class="tp">[</span><span class="ts">"AI"</span><span class="tp">,</span> <span class="ts">"Web"</span><span class="tp">,</span> <span class="ts">"Design"</span><span class="tp">],</span>
+  <span class="tk">"tools"</span><span class="tp">:</span> <span class="tp">[</span><span class="ts">"AI Tools"</span><span class="tp">,</span> <span class="ts">"Figma"</span><span class="tp">,</span> <span class="ts">"VS Code"</span><span class="tp">],</span>
+  <span class="tk">"status"</span><span class="tp">:</span> <span class="ts">"learning &amp; open to collaborate"</span>
 <span class="tp">}</span>
 <span class="tc">// 把这里换成你的真实信息</span></code></pre>
       </div>
@@ -729,13 +743,10 @@
   <div class="reveal">
     <p class="section-label">03 — Contact</p>
     <h2>有想法？<br>一起聊聊。</h2>
-    <a class="mail" href="mailto:hello@yourname.com">hello@yourname.com <span aria-hidden="true">↗</span></a>
+    <a class="mail" href="mailto:3303295930@qq.com">3303295930@qq.com <span aria-hidden="true">↗</span></a>
     <div class="socials">
       <a href="https://github.com/zpy03zpy" target="_blank" rel="noopener noreferrer">GitHub</a>
       <a href="https://space.bilibili.com/3690987675191907" target="_blank" rel="noopener noreferrer">Bilibili</a>
-      <a href="#" data-demo="示例链接：把 href 换成你的主页地址。">即刻</a>
-      <a href="#" data-demo="示例链接：把 href 换成你的主页地址。">小红书</a>
-      <a href="#" data-demo="示例链接：把 href 换成你的主页地址。">微博</a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -829,11 +840,11 @@
 
       function build() {
         var mobile = W < 760;
-        var count = mobile ? 22 : 30;
+        var count = mobile ? 18 : 28;
         rings = [];
         for (var i = 0; i < count; i++) {
           var u = i / (count - 1);
-          var n = Math.round((mobile ? 70 : 120) + u * (mobile ? 120 : 200));
+          var n = Math.round((mobile ? 60 : 110) + u * (mobile ? 100 : 180));
           var dust = [];
           for (var j = 0; j < n; j++) {
             var big = Math.random() < 0.07;
@@ -863,12 +874,12 @@
         var rect = canvas.getBoundingClientRect();
         W = Math.max(1, Math.round(rect.width || window.innerWidth));
         H = Math.max(1, Math.round(rect.height || window.innerHeight));
-        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        var mobile = W < 760;
+        dpr = Math.min(window.devicePixelRatio || 1, mobile ? 1.5 : 1.75);
         canvas.width = Math.round(W * dpr);
         canvas.height = Math.round(H * dpr);
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-        var mobile = W < 760;
         cx = W * (mobile ? 0.50 : 0.71);
         cy = H * (mobile ? 0.62 : 0.50);
         R = Math.hypot(W, H) * (mobile ? 0.62 : 0.58);
@@ -979,6 +990,17 @@
         }, 180);
       });
 
+      // 切到后台时停掉动画，回来时重新计时，避免相位跳变
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+          window.cancelAnimationFrame(raf);
+          raf = 0;
+        } else if (!reduce.matches) {
+          start = 0;
+          raf = window.requestAnimationFrame(frame);
+        }
+      });
+
       if (reduce.addEventListener) {
         reduce.addEventListener('change', begin);
       }
@@ -995,7 +1017,7 @@
         if (el.getAttribute('href') !== '#') return;
         e.preventDefault();
         if (!toast) return;
-        toast.textContent = el.getAttribute('data-demo') || '这是示例链接，记得换成你自己的。';
+        toast.textContent = el.getAttribute('data-demo') || '这是概念项目，暂无外部链接。';
         toast.classList.add('is-show');
         clearTimeout(timer);
         timer = setTimeout(function () { toast.classList.remove('is-show'); }, 2800);
