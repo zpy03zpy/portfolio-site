@@ -501,6 +501,15 @@
     font-family: var(--font-mono); font-size: 11px; letter-spacing: .04em;
     color: #6b7588;
   }
+  .footer-privacy{
+    margin: 14px 0 0; font-family: var(--font-mono); font-size: 11px;
+    letter-spacing: .03em; color: #6b7588;
+  }
+  .footer-privacy a{
+    color: #7c879c; text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,.12);
+  }
+  .footer-privacy a:hover{ color: var(--ink); }
 
   /* ============================================================
      9. 进场动画 & 提示条
@@ -569,6 +578,8 @@
     .orb-core::after{ display: none; }
   }
 </style>
+<!-- Umami 访问统计：只统计线上域名，本地预览不会上报 -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="ce8fdd40-0c6d-45de-9732-06804167da20" data-domains="zpy03zpy.github.io"></script>
 </head>
 <body id="top">
 
@@ -753,6 +764,7 @@
     <span>© <span id="year">2026</span> John · 保留所有权利</span>
     <span>手写 HTML &amp; CSS · 无框架</span>
   </div>
+  <p class="footer-privacy">本站使用 <a href="https://umami.is" target="_blank" rel="noopener noreferrer">Umami</a> 进行匿名访问统计，不使用 Cookie。</p>
 </footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
