@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#06070a">
+<meta name="robots" content="noindex">
+<title>404 — 页面走丢了 | John</title>
+<meta name="description" content="这个页面走丢了。回到 John 的作品集首页继续看看。">
+<style>
+  :root{
+    --bg:#06070a; --ink:#eef1f7; --muted:#98a2b3;
+    --violet:#8b5cf6; --cyan:#22d3ee; --pink:#f472b6;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ height:100%; }
+  body{
+    margin:0; padding:32px; overflow:hidden;
+    display:grid; place-items:center;
+    background:
+      radial-gradient(900px 600px at 18% 8%, rgba(34,211,238,.14), transparent 60%),
+      radial-gradient(800px 620px at 88% 92%, rgba(139,92,246,.20), transparent 62%),
+      radial-gradient(600px 500px at 70% 10%, rgba(244,114,182,.10), transparent 60%),
+      var(--bg);
+    color:var(--ink);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none;
+    background-image:
+      linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+    background-size:72px 72px;
+    -webkit-mask-image:radial-gradient(ellipse at 50% 45%, #000 0%, transparent 72%);
+    mask-image:radial-gradient(ellipse at 50% 45%, #000 0%, transparent 72%);
+  }
+  .wrap{ position:relative; z-index:1; width:100%; max-width:720px; text-align:center; }
+  .code{
+    margin:0; font-size:clamp(7rem,24vw,15rem); line-height:.82;
+    font-weight:800; letter-spacing:-.085em;
+    background:linear-gradient(120deg,var(--cyan),var(--violet) 58%,var(--pink));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    filter:drop-shadow(0 0 42px rgba(139,92,246,.28));
+  }
+  h1{ margin:30px 0 14px; font-size:clamp(1.55rem,4.6vw,2.5rem); letter-spacing:-.02em; }
+  p{ margin:0 auto 34px; max-width:44ch; color:var(--muted); line-height:1.9; font-size:.98rem; text-wrap:pretty; }
+  .actions{ display:flex; flex-wrap:wrap; gap:12px; justify-content:center; }
+  a{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 24px; border-radius:999px; text-decoration:none;
+    font-size:.9rem; font-weight:700; letter-spacing:.01em;
+    transition:transform .2s ease, background .2s ease, border-color .2s ease;
+  }
+  a:hover{ transform:translateY(-2px); }
+  .home{ background:var(--ink); color:var(--bg); }
+  .home:hover{ background:#fff; }
+  .small{ margin:44px 0 0; font-size:.78rem; letter-spacing:.16em; color:#6b7484; text-transform:uppercase; }
+  :focus-visible{ outline:2px solid var(--cyan); outline-offset:3px; border-radius:6px; }
+  @media (max-width:520px){
+    body{ padding:24px; }
+    .small{ margin-top:34px; }
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <p class="code" aria-hidden="true">404</p>
+    <h1>这个页面走丢了。</h1>
+    <p>页面可能被移动、删除，或者地址拼错了。<br>回到首页，继续看看作品。</p>
+    <div class="actions">
+      <a class="home" href="https://zpy03zpy.github.io/portfolio-site/">回到首页 <span aria-hidden="true">↗</span></a>
+    </div>
+    <p class="small">John · Portfolio</p>
+  </main>
+</body>
+</html>
