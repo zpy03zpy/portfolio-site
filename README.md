@@ -172,6 +172,15 @@ GitHub 和 Bilibili 已经换成你的主页，点击会在新窗口打开：
 
 页脚的联系方式是我额外加的（你只选了三个板块）。不需要的话，删掉 `<footer>…</footer>` 整段，或只改邮箱保留。
 
+### 11. 看访问统计
+
+本站接了 Umami Cloud 做匿名访问统计（无 Cookie，免费 Hobby 计划）。
+
+- 打开 <https://cloud.umami.is>，登录后选择 `John Portfolio`。
+- **Overview** 看总访问量、访客数、跳出率；**Realtime** 看当前在线；**Pages / Referrers / Countries / Devices** 看访问了哪些页面、从哪里来、用什么设备。
+- 统计代码在 `index.html` 的 `</head>` 前，`data-website-id` 那串不要改；`data-domains="zpy03zpy.github.io"` 让本地预览和别的域名不上报。
+- 广告拦截插件会拦掉一部分请求，所以后台数字通常比真实访问略低；404 页面也单独加了代码。
+
 ---
 
 ## 四、发布到网上（免费）
