@@ -398,6 +398,17 @@
   }
   .work-card:hover .work-art img{ transform: scale(1.04); }
 
+  .video-count{
+    position: absolute; top: 16px; right: 16px; z-index: 2;
+    padding: 5px 10px; border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(6,7,10,.62);
+    -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em;
+    color: #dbe2ef;
+  }
+
   /* 视频作品卡 */
   .video-play{
     position: absolute; inset: 0; z-index: 2;
@@ -565,13 +576,11 @@
 
   .video-backdrop{
     position: absolute; inset: 0;
-    background: rgba(3,4,8,.84);
-    -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
+    background: rgba(3,4,8,.88);
   }
 
   .video-dialog{
-    position: relative; width: min(960px, 100%);
+    position: relative; width: min(1120px, 100%);
     max-height: calc(100svh - 40px); overflow: auto;
     border: 1px solid var(--line); border-radius: 18px;
     background: #0a0c12;
@@ -588,12 +597,16 @@
     background: rgba(8,10,16,.72); color: var(--ink);
     font-size: 24px; line-height: 1; cursor: pointer;
     display: grid; place-items: center;
-    -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
   }
   .video-close:hover{ background: rgba(255,255,255,.12); }
 
-  .video-frame{ position: relative; aspect-ratio: 16 / 10; background: #000; }
+  .video-layout{
+    display: grid; grid-template-columns: minmax(0, 1fr) 318px;
+    align-items: stretch;
+  }
+  .video-stage{ min-width: 0; display: flex; flex-direction: column; }
+
+  .video-frame{ position: relative; aspect-ratio: 16 / 9; background: #000; }
   .video-frame video{
     width: 100%; height: 100%; display: block;
     background: #000; object-fit: contain;
@@ -612,14 +625,86 @@
   .video-empty strong{ font-size: 1rem; color: var(--ink); }
   .video-empty p{ margin: 0; color: var(--muted); font-size: .86rem; }
 
-  .video-meta{ padding: 20px 24px 24px; }
+  .video-meta{ padding: 18px 24px 22px; }
   .video-meta h3{ margin: 0 0 6px; font-size: 1.2rem; }
   .video-meta p{ margin: 0; color: var(--muted); font-size: .92rem; }
+
+  .video-playlist{
+    display: flex; flex-direction: column; min-width: 0;
+    border-left: 1px solid var(--line);
+    background: transparent;
+  }
+  .video-list-head{
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 20px 64px 12px 22px;
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: .12em;
+    color: var(--muted);
+  }
+  .video-list{
+    list-style: none; margin: 0; padding: 0 10px 12px;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .video-item{
+    width: 100%; display: grid; grid-template-columns: 84px minmax(0, 1fr);
+    gap: 12px; align-items: center; padding: 8px;
+    border: 1px solid transparent; border-radius: 10px;
+    background: transparent; color: var(--ink); text-align: left;
+    font: inherit; cursor: pointer;
+  }
+  .video-item:hover{ background: rgba(255,255,255,.045); }
+  .video-item.is-active{
+    background: rgba(139,92,246,.13);
+    border-color: rgba(139,92,246,.35);
+  }
+  .video-thumb{
+    position: relative; display: block; aspect-ratio: 16 / 9;
+    border-radius: 6px; overflow: hidden;
+    border: 1px solid rgba(255,255,255,.07);
+    background: #0b0d14;
+  }
+  .video-thumb img{
+    width: 100%; height: 100%; display: block;
+    object-fit: cover; opacity: .8;
+  }
+  .video-item.is-active .video-thumb img{ opacity: 1; }
+  .video-thumb em{
+    position: absolute; left: 4px; bottom: 4px;
+    font-style: normal; font-family: var(--font-mono); font-size: 9px;
+    padding: 2px 4px; border-radius: 3px;
+    background: rgba(0,0,0,.7); color: #fff;
+  }
+  .video-item-body{ min-width: 0; }
+  .video-item-body h4{
+    margin: 0 0 3px; font-size: .82rem; font-weight: 600;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .video-item-body p{
+    margin: 0; font-size: 10.5px; color: var(--muted);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .video-list-foot{
+    margin: auto 0 0; padding: 16px 22px;
+    border-top: 1px solid var(--line);
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: .06em;
+    color: #6b7588;
+  }
 
 
   /* ============================================================
      10. 响应式
      ============================================================ */
+  @media (max-width: 900px){
+    .video-dialog{ width: min(680px, 100%); max-height: calc(100svh - 28px); }
+    .video-layout{ grid-template-columns: 1fr; }
+    .video-playlist{ border-left: 0; border-top: 1px solid var(--line); }
+  }
+  @media (max-width: 720px){
+    .video-meta{ padding: 16px 18px 18px; }
+    .video-list-head{ padding: 16px 58px 10px 18px; }
+    .video-list{ padding: 0 8px 10px; }
+    .video-item{ grid-template-columns: 72px minmax(0, 1fr); gap: 10px; }
+  }
+
   @media (max-width: 980px){
     .hero{
       grid-template-columns: 1fr; min-height: auto;
@@ -724,22 +809,23 @@
     <div class="section-head reveal">
       <p class="section-label">01 — Selected Work</p>
       <h2>精选作品</h2>
-      <p class="section-sub">第一个是视频项目，下面是三个概念项目。换成你自己的作品时，改标题、说明和链接即可。</p>
+      <p class="section-sub">第一个是视频合集，下面是三个概念项目。换成你自己的作品时，改标题、说明和链接即可。</p>
     </div>
 
     <div class="work-grid">
-      <!-- 项目 1：视频项目。换成真实视频时，替换 images/project-1-cover.svg 和 video/project-1.mp4 -->
+      <!-- 项目 1：视频合集。换成真实视频时，替换 images/project-1-cover.svg 和 video/ 里的 MP4 -->
       <a class="work-card reveal" href="#" data-video="project-1" aria-haspopup="dialog" aria-controls="video-modal">
         <div class="work-art">
-          <img src="images/project-1-cover.svg" alt="视频项目封面" loading="lazy">
+          <img src="images/project-1-cover.svg" alt="视频合集封面" loading="lazy">
           <span class="work-year">2026 · VIDEO</span>
+          <span class="video-count">4 个视频</span>
           <span class="video-play" aria-hidden="true"><i><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></i></span>
         </div>
         <div class="work-body">
           <div class="work-tags"><span>AIGC</span><span>视频</span></div>
-          <h3>视频项目 · 即将上线</h3>
-          <p>封面已就位，视频正在整理中。</p>
-          <span class="work-link">查看视频 <span aria-hidden="true">↗</span></span>
+          <h3>视频作品合集 · 即将上线</h3>
+          <p id="video-card-desc">4 个视频，正在整理中。</p>
+          <span class="work-link">查看合集 <span aria-hidden="true">↗</span></span>
         </div>
       </a>
 
@@ -853,18 +939,25 @@
   <div class="video-backdrop" data-video-close></div>
   <div class="video-dialog" role="dialog" aria-modal="true" aria-labelledby="video-title">
     <button class="video-close" type="button" data-video-close aria-label="关闭视频">×</button>
-    <div class="video-frame">
-      <video id="project-video" controls playsinline preload="metadata" poster="images/project-1-cover.svg">
-        <source src="video/project-1.mp4" type="video/mp4">
-      </video>
-      <div class="video-empty">
-        <strong>视频即将上线</strong>
-        <p>稍后回来看看，或先浏览其他作品。</p>
+    <div class="video-layout">
+      <div class="video-stage">
+        <div class="video-frame is-empty">
+          <video id="project-video" controls playsinline preload="metadata" poster="images/project-1-cover.svg"></video>
+          <div class="video-empty">
+            <strong>视频即将上线</strong>
+            <p>稍后回来看看，或先浏览其他视频。</p>
+          </div>
+        </div>
+        <div class="video-meta" aria-live="polite">
+          <h3 id="video-title">视频作品合集 · 即将上线</h3>
+          <p id="video-desc">4 个视频，正在整理中。</p>
+        </div>
       </div>
-    </div>
-    <div class="video-meta">
-      <h3 id="video-title">视频项目 · 即将上线</h3>
-      <p>这里会补充一句作品说明：你做了什么、解决了什么问题。</p>
+      <aside class="video-playlist" aria-label="视频列表">
+        <div class="video-list-head"><span>视频列表</span><span class="video-list-count">4 个</span></div>
+        <ol class="video-list"></ol>
+        <p class="video-list-foot">点击标题切换视频</p>
+      </aside>
     </div>
   </div>
 </div>
@@ -1120,14 +1213,35 @@
       begin();
     })();
 
-    // 视频项目弹层
+    // 视频合集弹层
     (function videoModal() {
       var modal = $('#video-modal');
       if (!modal) return;
       var video = $('#project-video');
       var frame = $('.video-frame', modal);
       var closeBtn = $('.video-close', modal);
+      var titleEl = $('#video-title', modal);
+      var descEl = $('#video-desc', modal);
+      var listEl = $('.video-list', modal);
+      var countEl = $('.video-list-count', modal);
+      var cardCount = $('.video-count');
+      var cardDesc = $('#video-card-desc');
       var lastFocus = null;
+      var current = 0;
+
+      // 换视频：改这里。每项对应 video/ 里的一个文件。
+      var videos = [
+        { src: 'video/project-1-1.mp4', title: '视频 01', desc: '这里会补充一句作品说明。' },
+        { src: 'video/project-1-2.mp4', title: '视频 02', desc: '这里会补充一句作品说明。' },
+        { src: 'video/project-1-3.mp4', title: '视频 03', desc: '这里会补充一句作品说明。' },
+        { src: 'video/project-1-4.mp4', title: '视频 04', desc: '这里会补充一句作品说明。' }
+      ];
+      var poster = 'images/project-1-cover.svg';
+      var itemEls = [];
+
+      if (countEl) countEl.textContent = videos.length + ' 个';
+      if (cardCount) cardCount.textContent = videos.length + ' 个视频';
+      if (cardDesc) cardDesc.textContent = videos.length + ' 个视频，正在整理中。';
 
       function showEmpty() {
         if (frame) frame.classList.add('is-empty');
@@ -1135,11 +1249,31 @@
 
       if (video) {
         video.addEventListener('error', showEmpty);
-        var source = video.querySelector('source');
-        if (source) source.addEventListener('error', showEmpty);
         video.addEventListener('loadedmetadata', function () {
           if (frame) frame.classList.remove('is-empty');
         });
+      }
+
+      function select(i, autoplay) {
+        var v = videos[i];
+        if (!v || !video) return;
+        current = i;
+        if (titleEl) titleEl.textContent = v.title;
+        if (descEl) descEl.textContent = v.desc;
+        itemEls.forEach(function (btn, n) {
+          var on = n === i;
+          btn.classList.toggle('is-active', on);
+          btn.setAttribute('aria-current', on ? 'true' : 'false');
+        });
+        if (frame) frame.classList.add('is-empty');
+        video.pause();
+        video.poster = v.poster || poster;
+        video.src = v.src;
+        video.load();
+        if (autoplay) {
+          var p = video.play();
+          if (p && p.catch) p.catch(function () {});
+        }
       }
 
       function open() {
@@ -1148,9 +1282,11 @@
         modal.setAttribute('aria-hidden', 'false');
         document.body.classList.add('video-open');
         if (closeBtn) closeBtn.focus();
-        if (video && frame && !frame.classList.contains('is-empty')) {
-          var playing = video.play();
-          if (playing && playing.catch) playing.catch(function () {});
+        if (!video.hasAttribute('src')) {
+          select(0, true);
+        } else {
+          var p = video.play();
+          if (p && p.catch) p.catch(function () {});
         }
       }
 
@@ -1163,6 +1299,45 @@
           try { video.currentTime = 0; } catch (e) {}
         }
         if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+
+      // 生成右侧播放列表
+      if (listEl) {
+        videos.forEach(function (v, i) {
+          var li = document.createElement('li');
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'video-item';
+          btn.setAttribute('aria-label', '播放 ' + v.title);
+
+          var thumb = document.createElement('span');
+          thumb.className = 'video-thumb';
+          var img = document.createElement('img');
+          img.src = v.poster || poster;
+          img.alt = '';
+          var num = document.createElement('em');
+          num.textContent = (i + 1 < 10 ? '0' : '') + (i + 1);
+          thumb.appendChild(img);
+          thumb.appendChild(num);
+
+          var body = document.createElement('span');
+          body.className = 'video-item-body';
+          var h4 = document.createElement('h4');
+          h4.textContent = v.title;
+          var p = document.createElement('p');
+          p.textContent = v.desc;
+          body.appendChild(h4);
+          body.appendChild(p);
+
+          btn.appendChild(thumb);
+          btn.appendChild(body);
+          btn.addEventListener('click', function () {
+            select(i, true);
+          });
+          li.appendChild(btn);
+          listEl.appendChild(li);
+          itemEls.push(btn);
+        });
       }
 
       $$('[data-video]').forEach(function (el) {
