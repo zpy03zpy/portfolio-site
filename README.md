@@ -68,7 +68,7 @@ portfolio-site/
 
 1. 准备视频：H.264 编码的 MP4，建议 16:10 或 16:9，30 秒内、30MB 以内，文件名用 `project-1.mp4`。
 2. 在 `portfolio-site` 里新建 `video` 文件夹，把视频放进去，最终路径是 `video/project-1.mp4`。
-3. 封面：现在用 `images/project-1-cover.svg` 占位。想换成视频里的真实画面，准备一张 1600×1000 的 JPG，命名 `project-1.jpg` 放进 `images/`，然后搜索 `project-1-cover.svg`，把两处都改成 `images/project-1.jpg`（卡片图和视频 poster）。
+3. 封面：现在用 `images/project-1-cover.svg` 占位。想换成视频里的真实画面，准备一张 1600×1000 的 JPG，命名 `project-1.jpg` 放进 `images/`，然后搜索 `project-1-cover.svg`，把三处都改成 `images/project-1.jpg`（卡片图、视频 poster、弹层空状态背景）。
 4. 文字：搜索 `视频项目 · 即将上线` 改标题；搜索 `封面已就位，视频正在整理中。` 改说明；搜索 `2026 · VIDEO` 改年份。
 5. 保存后双击 `index.html`，点第一张卡，视频会在站内弹层播放。
 
@@ -263,7 +263,7 @@ GitHub 和 Bilibili 已经换成你的主页，点击会在新窗口打开：
 
 ## 六、接下来可以做的
 
-- 把 4 个概念项目换成你**真正做过的东西**，每个写清「问题 → 我的做法 → 结果」。
+- 把视频和 3 个概念项目换成你**真正做过的东西**，每个写清「问题 → 我的做法 → 结果」。
 - 给每个项目做单独的详情页（进阶，需要多几个 HTML 文件）。
 - 加一个访问统计（Umami、Google Analytics）。
 - 买一个自己的域名，比如 `yourname.com`。
