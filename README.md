@@ -23,7 +23,8 @@ portfolio-site/
 ├── 404.html        ← 找不到页面时显示的页面
 ├── sitemap.xml     ← 给搜索引擎的页面清单
 ├── robots.txt      ← 告诉搜索引擎可以抓取什么
-├── images/         ← 放项目封面图（现在可以先不管）
+├── video/          ← 放视频 project-1.mp4（没有就自己新建）
+├── images/         ← 项目封面图；project-1-cover.svg 是当前视频占位封面
 ├── README.md       ← 你正在看的说明
 └── preview-*.png   ← 预览截图，可以删
 ```
@@ -59,20 +60,36 @@ portfolio-site/
 
 搜索 `3303295930@qq.com`，换成你的邮箱（两处：按钮链接和显示文字）。
 
-### 4. 换作品（4 个项目）
+### 4. 换作品（1 个视频 + 3 个概念项目）
 
-每个作品卡片都有注释 `<!-- 项目 1 -->` 到 `<!-- 项目 4 -->`。以第一个为例：
+第一张是视频卡，后三张是概念项目。所有卡片都在 `<!-- ==================== 作品 ==================== -->` 下面。
+
+#### 换视频卡
+
+1. 准备视频：H.264 编码的 MP4，建议 16:10 或 16:9，30 秒内、30MB 以内，文件名用 `project-1.mp4`。
+2. 在 `portfolio-site` 里新建 `video` 文件夹，把视频放进去，最终路径是 `video/project-1.mp4`。
+3. 封面：现在用 `images/project-1-cover.svg` 占位。想换成视频里的真实画面，准备一张 1600×1000 的 JPG，命名 `project-1.jpg` 放进 `images/`，然后搜索 `project-1-cover.svg`，把两处都改成 `images/project-1.jpg`（卡片图和视频 poster）。
+4. 文字：搜索 `视频项目 · 即将上线` 改标题；搜索 `封面已就位，视频正在整理中。` 改说明；搜索 `2026 · VIDEO` 改年份。
+5. 保存后双击 `index.html`，点第一张卡，视频会在站内弹层播放。
+
+> 如果弹层仍显示「视频即将上线」，先确认文件名和路径完全一致：`video/project-1.mp4`（区分大小写）。
+
+> 想改成跳转 B 站：删掉卡片上的 `data-video="project-1"`，把 `href="#"` 换成 B 站视频地址。这样点击会直接跳转，不再弹层。
+
+#### 换后三个概念项目
+
+以第二张为例：
 
 ```html
 <a class="work-card reveal" href="#" data-demo="…" style="--c1:#22d3ee; --c2:#6366f1;">
   <div class="work-art">
-    <span class="work-year">2026 · PRODUCT</span>
-    <span class="work-index">01</span>
+    <span class="work-year">2025 · BRANDING</span>
+    <span class="work-index">02</span>
   </div>
   <div class="work-body">
-    <div class="work-tags"><span>产品设计</span><span>前端</span></div>
-    <h3>Aurora 数据看板</h3>
-    <p>把 12 个分散指标，收进一屏就能读懂的界面。</p>
+    <div class="work-tags"><span>品牌识别</span><span>排版</span></div>
+    <h3>Fold 独立杂志</h3>
+    <p>一套可以生长的视觉系统，从封面延伸到社交媒体。</p>
     <span class="work-link">查看项目 <span aria-hidden="true">↗</span></span>
   </div>
 </a>
@@ -82,21 +99,21 @@ portfolio-site/
 | --- | --- |
 | 项目名 | `<h3>` 里的文字 |
 | 一句话说明 | `<p>` 里的文字 |
-| 分类标签 | `<span>产品设计</span>` 这类标签 |
+| 分类标签 | `<span>品牌识别</span>` 这类标签 |
 | 年份 | `<span class="work-year">` 里的文字 |
 | 点击去哪 | 把 `href="#"` 换成真实网址，例如 `href="https://example.com"` |
 
 > **小提示**：链接还是 `#` 时，点击会弹出「概念项目」的提示，这是故意的。
 > 换成真实网址后提示会自动消失，不用改别的。
 
-#### 想换封面图？
+#### 想换后三张的封面图？
 
-1. 准备 4 张图，建议尺寸 **1600 × 1000**，JPG 格式，每张小于 300KB。
-2. 命名为 `project-1.jpg`、`project-2.jpg`……放进 `images/` 文件夹。
+1. 准备 3 张图，建议尺寸 **1600 × 1000**，JPG 格式，每张小于 300KB。
+2. 命名为 `project-2.jpg`、`project-3.jpg`、`project-4.jpg`，放进 `images/` 文件夹。
 3. 在 `index.html` 里找到 `有真实项目图时` 这段注释，把 `<img>` 那一行的注释符号 `<!--` 和 `-->` 删掉：
 
 ```html
-<img src="images/project-1.jpg" alt="Aurora 数据看板项目封面">
+<img src="images/project-2.jpg" alt="Fold 独立杂志项目封面">
 ```
 
 `alt` 里写图片内容，方便搜索引擎和读屏软件理解。
