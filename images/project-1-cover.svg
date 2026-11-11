@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="视频项目封面占位">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#070a12"/>
+      <stop offset=".55" stop-color="#13102a"/>
+      <stop offset="1" stop-color="#06242c"/>
+    </linearGradient>
+    <radialGradient id="g1" cx=".7" cy=".25" r=".62">
+      <stop offset="0" stop-color="#8b5cf6" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2" cx=".22" cy=".85" r=".55">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M80 0H0V80" fill="none" stroke="#ffffff" stroke-opacity=".055"/>
+    </pattern>
+    <linearGradient id="wave" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0"/>
+      <stop offset=".25" stop-color="#22d3ee" stop-opacity=".7"/>
+      <stop offset=".7" stop-color="#a78bfa" stop-opacity=".75"/>
+      <stop offset="1" stop-color="#f472b6" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect width="1600" height="1000" fill="url(#g1)"/>
+  <rect width="1600" height="1000" fill="url(#g2)"/>
+  <rect width="1600" height="1000" fill="url(#grid)"/>
+
+  <g fill="none" stroke="#ffffff" stroke-opacity=".08">
+    <circle cx="1190" cy="330" r="170"/>
+    <circle cx="1190" cy="330" r="250"/>
+    <circle cx="1190" cy="330" r="330"/>
+    <circle cx="1190" cy="330" r="410"/>
+  </g>
+
+  <g fill="none" stroke="url(#wave)" stroke-width="2" opacity=".8">
+    <path d="M-60 660 C 220 600, 360 740, 600 660 S 980 560, 1240 650 S 1540 720, 1680 640"/>
+    <path d="M-60 700 C 240 650, 380 780, 620 700 S 1000 610, 1260 700 S 1540 760, 1680 690" opacity=".45"/>
+  </g>
+
+  <text x="1520" y="900" text-anchor="end" fill="none" stroke="#ffffff" stroke-opacity=".2" stroke-width="2"
+        font-family="Arial, sans-serif" font-size="300" font-weight="800" letter-spacing="-20">01</text>
+</svg>
