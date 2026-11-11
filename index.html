@@ -398,6 +398,21 @@
   }
   .work-card:hover .work-art img{ transform: scale(1.04); }
 
+  /* 视频作品卡 */
+  .video-play{
+    position: absolute; inset: 0; z-index: 2;
+    display: grid; place-items: center; pointer-events: none;
+  }
+  .video-play i{
+    display: grid; place-items: center;
+    width: 64px; height: 64px; border-radius: 50%;
+    background: rgba(244,246,251,.94); color: #08090d;
+    box-shadow: 0 14px 40px rgba(0,0,0,.45);
+    transition: transform .4s var(--ease), background .3s;
+  }
+  .video-play svg{ margin-left: 3px; }
+  .work-card:hover .video-play i{ transform: scale(1.08); background: #fff; }
+
   .work-body{ display: flex; flex-direction: column; gap: 9px; padding: 22px 24px 24px; flex: 1; }
   .work-tags{ display: flex; flex-wrap: wrap; gap: 8px; }
   .work-tags span{
@@ -535,6 +550,74 @@
   .toast.is-show{ opacity: 1; transform: translate(-50%, 0); }
 
   /* ============================================================
+     10. 视频弹层
+     ============================================================ */
+  body.video-open{ overflow: hidden; }
+
+  .video-modal{
+    position: fixed; inset: 0; z-index: 150;
+    display: grid; place-items: center;
+    padding: clamp(14px, 3vw, 32px);
+    opacity: 0; visibility: hidden;
+    transition: opacity .3s, visibility .3s;
+  }
+  .video-modal.is-open{ opacity: 1; visibility: visible; }
+
+  .video-backdrop{
+    position: absolute; inset: 0;
+    background: rgba(3,4,8,.84);
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+  }
+
+  .video-dialog{
+    position: relative; width: min(960px, 100%);
+    max-height: calc(100svh - 40px); overflow: auto;
+    border: 1px solid var(--line); border-radius: 18px;
+    background: #0a0c12;
+    box-shadow: 0 40px 120px rgba(0,0,0,.7);
+    transform: translateY(16px) scale(.985);
+    transition: transform .35s var(--ease);
+  }
+  .video-modal.is-open .video-dialog{ transform: none; }
+
+  .video-close{
+    position: absolute; top: 12px; right: 12px; z-index: 4;
+    width: 40px; height: 40px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.18);
+    background: rgba(8,10,16,.72); color: var(--ink);
+    font-size: 24px; line-height: 1; cursor: pointer;
+    display: grid; place-items: center;
+    -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+  }
+  .video-close:hover{ background: rgba(255,255,255,.12); }
+
+  .video-frame{ position: relative; aspect-ratio: 16 / 10; background: #000; }
+  .video-frame video{
+    width: 100%; height: 100%; display: block;
+    background: #000; object-fit: contain;
+  }
+  .video-empty{
+    position: absolute; inset: 0; display: none;
+    place-content: center; gap: 8px; padding: 24px; text-align: center;
+    background:
+      radial-gradient(60% 80% at 50% 40%, rgba(139,92,246,.18), transparent 70%),
+      linear-gradient(rgba(6,7,10,.45), rgba(6,7,10,.78)),
+      url("images/project-1-cover.svg") center / cover no-repeat,
+      #070910;
+  }
+  .video-frame.is-empty video{ visibility: hidden; }
+  .video-frame.is-empty .video-empty{ display: grid; }
+  .video-empty strong{ font-size: 1rem; color: var(--ink); }
+  .video-empty p{ margin: 0; color: var(--muted); font-size: .86rem; }
+
+  .video-meta{ padding: 20px 24px 24px; }
+  .video-meta h3{ margin: 0 0 6px; font-size: 1.2rem; }
+  .video-meta p{ margin: 0; color: var(--muted); font-size: .92rem; }
+
+
+  /* ============================================================
      10. 响应式
      ============================================================ */
   @media (max-width: 980px){
@@ -641,23 +724,22 @@
     <div class="section-head reveal">
       <p class="section-label">01 — Selected Work</p>
       <h2>精选作品</h2>
-      <p class="section-sub">下面是四个概念项目，用来展示版式与交互。换成你自己的项目时，改标题、说明和链接即可。</p>
+      <p class="section-sub">第一个是视频项目，下面是三个概念项目。换成你自己的作品时，改标题、说明和链接即可。</p>
     </div>
 
     <div class="work-grid">
-      <!-- 项目 1：改这里的文字和链接 -->
-      <a class="work-card reveal" href="#" data-demo="概念项目：暂无外部链接；有真实项目后把 href 换成项目地址。" style="--c1:#22d3ee; --c2:#6366f1;">
+      <!-- 项目 1：视频项目。换成真实视频时，替换 images/project-1-cover.svg 和 video/project-1.mp4 -->
+      <a class="work-card reveal" href="#" data-video="project-1" aria-haspopup="dialog" aria-controls="video-modal">
         <div class="work-art">
-          <!-- 有真实项目图时，把下面这行取消注释（图片放进 images 文件夹）：
-          <img src="images/project-1.jpg" alt="Aurora 数据看板项目封面"> -->
-          <span class="work-year">2026 · PRODUCT</span>
-          <span class="work-index">01</span>
+          <img src="images/project-1-cover.svg" alt="视频项目封面" loading="lazy">
+          <span class="work-year">2026 · VIDEO</span>
+          <span class="video-play" aria-hidden="true"><i><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></i></span>
         </div>
         <div class="work-body">
-          <div class="work-tags"><span>产品设计</span><span>前端</span></div>
-          <h3>Aurora 数据看板</h3>
-          <p>把 12 个分散指标，收进一屏就能读懂的界面。</p>
-          <span class="work-link">查看项目 <span aria-hidden="true">↗</span></span>
+          <div class="work-tags"><span>AIGC</span><span>视频</span></div>
+          <h3>视频项目 · 即将上线</h3>
+          <p>封面已就位，视频正在整理中。</p>
+          <span class="work-link">查看视频 <span aria-hidden="true">↗</span></span>
         </div>
       </a>
 
@@ -765,6 +847,27 @@
 </footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- ==================== 视频弹层 ==================== -->
+<div class="video-modal" id="video-modal" aria-hidden="true">
+  <div class="video-backdrop" data-video-close></div>
+  <div class="video-dialog" role="dialog" aria-modal="true" aria-labelledby="video-title">
+    <button class="video-close" type="button" data-video-close aria-label="关闭视频">×</button>
+    <div class="video-frame">
+      <video id="project-video" controls playsinline preload="metadata" poster="images/project-1-cover.svg">
+        <source src="video/project-1.mp4" type="video/mp4">
+      </video>
+      <div class="video-empty">
+        <strong>视频即将上线</strong>
+        <p>稍后回来看看，或先浏览其他作品。</p>
+      </div>
+    </div>
+    <div class="video-meta">
+      <h3 id="video-title">视频项目 · 即将上线</h3>
+      <p>这里会补充一句作品说明：你做了什么、解决了什么问题。</p>
+    </div>
+  </div>
+</div>
 
 <script>
   (function () {
@@ -1015,6 +1118,67 @@
       }
 
       begin();
+    })();
+
+    // 视频项目弹层
+    (function videoModal() {
+      var modal = $('#video-modal');
+      if (!modal) return;
+      var video = $('#project-video');
+      var frame = $('.video-frame', modal);
+      var closeBtn = $('.video-close', modal);
+      var lastFocus = null;
+
+      function showEmpty() {
+        if (frame) frame.classList.add('is-empty');
+      }
+
+      if (video) {
+        video.addEventListener('error', showEmpty);
+        var source = video.querySelector('source');
+        if (source) source.addEventListener('error', showEmpty);
+        video.addEventListener('loadedmetadata', function () {
+          if (frame) frame.classList.remove('is-empty');
+        });
+      }
+
+      function open() {
+        lastFocus = document.activeElement;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('video-open');
+        if (closeBtn) closeBtn.focus();
+        if (video && frame && !frame.classList.contains('is-empty')) {
+          var playing = video.play();
+          if (playing && playing.catch) playing.catch(function () {});
+        }
+      }
+
+      function close() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('video-open');
+        if (video) {
+          video.pause();
+          try { video.currentTime = 0; } catch (e) {}
+        }
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+
+      $$('[data-video]').forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+          open();
+        });
+      });
+
+      $$('[data-video-close]', modal).forEach(function (el) {
+        el.addEventListener('click', close);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+      });
     })();
 
     // 示例链接提示（换成真实链接后，这个提示不会再出现）
